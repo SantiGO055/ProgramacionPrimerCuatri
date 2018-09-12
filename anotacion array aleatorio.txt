@@ -1,0 +1,35 @@
+int edad[CANT], isEmpty[CANT],i;
+float salario[CANT];
+
+for (i=0;i<CANT;i++){
+	isEmpty[i]=1;
+}
+
+for(i=0;i<CANT;i++){
+	if (isEmpty[i]==1){
+		printf...
+		scanf...
+		isEmpty[i]=0
+		break; //rompe el for
+	}
+}
+
+
+				Para buscar un dato:
+
+int edad[CANT], isEmpty[CANT],i,edadAux;
+float salario[CANT],flag=0;
+
+printf("Ingrese dato a buscar: ");
+scanf("%d",&edadAux);
+
+for(i=0;i<CANT;i++){
+	if(edadAux==edad[i]){
+		printf("Dato encontrado");
+		flag=1;
+		break;
+	}
+}
+if(flag==0){
+	printf("No encontrado");
+}

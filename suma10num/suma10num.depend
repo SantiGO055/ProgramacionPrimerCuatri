@@ -1,0 +1,5 @@
+# depslib dependency file v1.0
+1535410143 source:d:\gonzalez\suma10num\main.c
+	<stdio.h>
+	<stdlib.h>
+

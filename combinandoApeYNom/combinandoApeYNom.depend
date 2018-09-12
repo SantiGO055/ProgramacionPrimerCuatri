@@ -1,0 +1,11 @@
+# depslib dependency file v1.0
+1536626145 source:d:\gonzalez santiago\combinandoapeynom\main.c
+	<stdio.h>
+	<stdlib.h>
+
+1536628302 source:d:\gonzalez santiago\programacion-i-1er-cuatri-master\combinandoapeynom\main.c
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	<ctype.h>
+

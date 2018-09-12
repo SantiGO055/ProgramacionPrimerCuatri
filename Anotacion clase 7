@@ -1,0 +1,22 @@
+#DEFINE CANT 5
+
+int legajo[CANT];
+float salario[CANT];
+char nombre[CANT][31];      //primer corchete guardo 5 nombres/cadenas, el segundo corchete voy a tener 31 posiciones
+		   [fila][columna]
+//va a ser una matriz
+0 'j' 'u 'a 'n' ... [31]
+1
+2
+3
+4
+
+//0,1,2,3,4 va a ser la cantidad de nombres
+
+
+for (i=0; i<CANT;i++){
+	printf ("Legajo: ");
+	scanf ("%d",&legajo[i]);
+	printf ("Salario: ");
+	fgets(nombre[i],sizeof(nombre[i])-2, stdin ) //le pongo el primer corchete
+}
