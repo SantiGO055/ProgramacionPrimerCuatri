@@ -1,0 +1,10 @@
+# depslib dependency file v1.0
+1537062055 source:d:\proyectos c\funcionesutn\utn.c
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	<ctype.h>
+	"utn.h"
+
+1537062077 d:\proyectos c\funcionesutn\utn.h
+
