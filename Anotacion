@@ -62,92 +62,37 @@ ptr=%var;-----> tomo la direccion de memoria
 
 Se usa tambien para devolver una cadena con char*
 
+-----------------------------------------
+CLASE 8
+-----------------------------------------
+Tipos de datos:
+char
+void
+int
+float
+double
 
--------------------------------------------
+Estructuras de datos:
 
-Array cuando los puntos son iguales y hay que comparar la diferencia de goles
-int pts[5], auxPts;
-int dg[5], auxdg;
+struct eEmpleado{
+	int legajo; // datos miembro o campo
+	char nombre[31]; // datos miembro o campo
+	float salario; // datos miembro o campo
+	int isEmpty; // datos miembro o campo
+};
 
-	[1] [0] [3] [3] [1]
-	[8] [10] [5] [3] [4]
-indice:  0   1    2   3   4
+Lo declaramos antes del main
+Va en la biblioteca .h donde van los prototipos
 
-for (i=0;i<5-1;i++){
-	for(j=i+1;j<5;j++){
-	if(pts[i]<pts[j]){
-		auxPts
-		}
-	
-	}
-}
+struct eEmpleado emple; //emple es una variable de tipo de dato eEmpleado
 
-
-Cadena de caracteres (String):
-¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯  ¯¯¯¯¯¯
-
-['h']['o']['l']['a']['\0']['']['']['']
-  0    1    2    3     4    5   6   7
-
-No hay que preocuparse por el \0 por que cuando imprima va a cortar donde corta la cadena
-
-Se puede incluir la funcion string.h
-
-strcpy(destino, origen);
-
-El origen puede ser una variable, una constante o puede ser literal entre "comillas"
-
-El destino tiene que ser una variable
+emple.legajo=
+emple.nombre //no puedo trabajar con operador de asignacion, lo asigno con strcpy , por scanf %s
+emple.salario=
+emple.isEmpty=
 
 
 
 
-
-
-%d Imprime un número entero
-%f Imprime un número con decimales
-%c Imprime un caracter
-%s Imprime un array de caracteres
-
-
-gets
-
-
-cantidad=strlen(nombre); //devuelve la cantidad de caracteres pero tambien devuelve los espacios
-
-['J']['u']['a']['n'][' ']['P']['a']['b']['l']['o']['\n']['\0']
-  0    1    2    3    4    5    6    7    8    9    10
-
-fgets (cadena,cantidad,stdin);
-si tomo el dato con fgets el enter va a ser un caracter mas y va a devolver 11
-
-Para que devuelva 10 y no 11 hacemos:
-
-char buffer[64];
-fgets(buffer,sizeof(buffer)-2,stdin); //le resto 2 por que sizeof(buffer) lee los bytes o caracteres de buffer, va a leer 64
-
-cantidad = strlen(buffer); //devuelve la cantidad de caracteres a la variable cantidad
-
-buffer[cantidad-1] = '\0'; //le resto 1 para posicionarse antes del \0, luego almacena en esa posicion el \n
-
-printf("%s", buffer);
-
-------------------------------------------------
-
-strcat (apeNom," "); //lo uso para concatenar
-
-usando la biblioteca #include <string.h>:
-strlwr(nombre); //pasa todo a minuscula, si esta en minuscula lo deja asi, si esta en mayuscula lo pasa todo a minuscula
-
-strupl(nombre); //lo mismo que antes pero todo a mayuscula
-
-
-#include <ctype.h>
-tolower //pasa a minuscula un solo caracter
-toupper //pasa a mayuscula un solo caracter
-nombre[0]=toupper(nombre[0]);
-
-Hacer
-la inicial en mayuscula y el resto todo en minuscula
 
 
