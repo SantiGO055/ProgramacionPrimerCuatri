@@ -28,5 +28,5 @@ int obtenerEspacioLibre(ePersona persona[], int cantidad);
  */
 
 
-void alta(ePersona[],int CANT);
+void alta(ePersona[], int CANT);
 #endif // PERSONA_H_INCLUDED

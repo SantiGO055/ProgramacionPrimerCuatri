@@ -19,7 +19,8 @@ int main()
         scanf("%d",&opcion);
         switch(opcion){
             case 1:
-                alta(per,CANT);
+                alta(per, CANT);
+                system("cls");
                 break;
             case 2:
 
@@ -31,7 +32,7 @@ int main()
 
                 break;
         }
-    }while(opcion!=5&&opcion<=5);
+    }while(opcion!=4&&opcion<=4);
     /*for(i=0;i<CANT;i++){
         printf("Ingrese DNI: ");
         scanf("%ld",&per[i].dni);
