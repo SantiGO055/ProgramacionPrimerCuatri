@@ -1,0 +1,8 @@
+# depslib dependency file v1.0
+1537225961 source:d:\gonzalez santiago\estructuras\main.c
+	<stdio.h>
+	<stdlib.h>
+	"utn.h"
+
+1537062934 d:\gonzalez santiago\estructuras\utn.h
+
