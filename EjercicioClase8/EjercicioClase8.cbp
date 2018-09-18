@@ -31,13 +31,13 @@
 		<Compiler>
 			<Add option="-Wall" />
 		</Compiler>
-		<Unit filename="funcionesCargaPers.c">
-			<Option compilerVar="CC" />
-		</Unit>
-		<Unit filename="funcionesCargaPers.h" />
 		<Unit filename="main.c">
 			<Option compilerVar="CC" />
 		</Unit>
+		<Unit filename="persona.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="persona.h" />
 		<Extensions>
 			<code_completion />
 			<envvars />
