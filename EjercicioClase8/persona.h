@@ -1,5 +1,5 @@
-#ifndef FUNCIONESCARGAPERS_H_INCLUDED
-#define FUNCIONESCARGAPERS_H_INCLUDED
+#ifndef PERSONA_H_INCLUDED
+#define PERSONA_H_INCLUDED
 typedef struct{
     int dia,mes,anio;
 }eFecha;
@@ -12,13 +12,13 @@ typedef struct{
     int isEmpty;
 }ePersona;
 
-
+int buscarPorDni(ePersona[], int,long int dniAux);
 /**
  * Obtiene el primer indice libre del array.
  * @param lista el array se pasa como parametro.
  * @return el primer indice disponible
  */
-int obtenerEspacioLibre(ePersona lista[], int cantidad);
+int obtenerEspacioLibre(ePersona persona[], int cantidad);
 
 /**
  * Obtiene el indice que coincide con el dni pasado por parametro.
@@ -26,7 +26,7 @@ int obtenerEspacioLibre(ePersona lista[], int cantidad);
  * @param dni el dni a ser buscado en el array.
  * @return el indice en donde se encuentra el elemento que coincide con el parametro dni
  */
-int buscarPorDni(ePersona lista[], int dni);
 
-void alta(ePersona[],int);
-#endif // FUNCIONESCARGAPERS_H_INCLUDED
+
+void alta(ePersona[],int CANT);
+#endif // PERSONA_H_INCLUDED

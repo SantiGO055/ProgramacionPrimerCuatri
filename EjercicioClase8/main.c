@@ -5,10 +5,12 @@
 
 int main()
 {
-    int i;
+
+    int opcion;
     ePersona per[CANT];
+    do{
     system("cls");
-    printf("\Menu");
+    printf("Menu\n");
         printf("1- Agregar persona\n");
         printf("2- Borrar persona\n");
         printf("3- Imprimir lista ordenada por  nombre\n");
@@ -18,7 +20,6 @@ int main()
         switch(opcion){
             case 1:
                 alta(per,CANT);
-                system("cls");
                 break;
             case 2:
 
@@ -30,7 +31,7 @@ int main()
 
                 break;
         }
-    }while(opcion!=4&&opcion<=4);
+    }while(opcion!=5&&opcion<=5);
     /*for(i=0;i<CANT;i++){
         printf("Ingrese DNI: ");
         scanf("%ld",&per[i].dni);

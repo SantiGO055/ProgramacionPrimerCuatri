@@ -1,5 +1,20 @@
 # depslib dependency file v1.0
-1537228814 source:d:\gonzalez santiago\ejercicioclase8\main.c
+1537309914 source:d:\gonzalez santiago\ejercicioclase8\main.c
 	<stdio.h>
 	<stdlib.h>
+	"persona.h"
+
+1537283172 source:c:\users\drspeedyres\downloads\programacionprimercuatri-master\ejercicioclase8\main.c
+	<stdio.h>
+	<stdlib.h>
+	"persona.h"
+
+1537284546 c:\users\drspeedyres\downloads\programacionprimercuatri-master\ejercicioclase8\persona.h
+
+1537308719 d:\gonzalez santiago\ejercicioclase8\persona.h
+
+1537309385 source:d:\gonzalez santiago\ejercicioclase8\persona.c
+	<stdio.h>
+	<stdlib.h>
+	<ctype.h>
 

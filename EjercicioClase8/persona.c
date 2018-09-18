@@ -1,28 +1,52 @@
-int buscarPorDni(ePersona personas[], int dni){
+#include <stdio.h>
+#include <stdlib.h>
+#include <ctype.h>
+typedef struct{
+    int dia,mes,anio;
+}eFecha;
+
+typedef struct{
+    long int dni;
+    char apellido[31];
+    char nombre[31];
+    eFecha fechaNac;
+    int isEmpty;
+}ePersona;
+
+int buscarPorDni(ePersona per[], int cantidad,long int dniAux){
     int i;
-    for(i=0;i<)
-}
-
-int obtenerEspacioLibre(ePersona lista[], int cantidad) //para que en el alta
-{
-    int i,retorno=-1;
+    int retorno;
     for(i=0;i<cantidad;i++){
-        if(per[i].isEmpty==1){ //encontro un lugar libre
-
-            retorno=i;
-            break;
+        if(per[i].isEmpty==0)
+        {
+            if(per[i].dni==dniAux){
+                retorno=-1;
+                break;
+            }
+            else{
+                retorno=i;
+            }
         }
+
     }
     return retorno;
 }
-void alta(ePersona personas[]){
-    int index;
-    index=obtenerEspacioLibre(per, CANT);
+void alta(ePersona per[],int CANT){
+    int index,i;
+    long int dniAux;
+    index=obtenerEspacioLibre(per,CANT);
     if(index!=-1){
             //validar dni con funcion
 
             printf("Ingrese DNI: ");
-            scanf("%ld",&per[i].dni);
+            scanf("%ld",&dniAux);
+            while(buscarPorDni(per,CANT,dniAux)==-1) {
+                printf("DNI existente\n");
+                printf("Reingrese DNI: \n");
+                scanf("%ld",&dniAux);
+                }
+            per[i].dni=dniAux;
+
             printf("Ingrese Apellido: ");
             scanf("%s",per[i].apellido);
             printf("Ingrese Nombre: ");
@@ -37,27 +61,40 @@ void alta(ePersona personas[]){
     }
 }
 
+int obtenerEspacioLibre(ePersona per[], int CANT) //para que en el alta
+{
+    int i,retorno=-1;
+    for(i=0;i<CANT;i++){
+        if(per[i].isEmpty==1){ //encontro un lugar libre
+
+            retorno=i;
+            break;
+        }
+    }
+    return retorno;
+}
+
+
 void baja(ePersona per[],int cantidad){
     int i;
     long int dniAux;
     char rta;
-    printf("DNI: ")
-    scanf("%ld"&dniAux)
+    printf("DNI: ");
+    scanf("%ld",&dniAux);
     for(i=0;i<cantidad;i++){
         if(dniAux==per[i].dni){//lo encontro
             printf("%s %s %ld",per[i].apellido,per[i].nombre,per[i].dni);
-        do{
-            printf("Eliminar registro? S/N: "); //validad entre s y n
-            fflush(stdin)
+            do{ //validad entre s y n
+            printf("Eliminar registro? S/N: ");
+            fflush(stdin);
             rta=toupper(getch()); //lo que tecleo lo paso a mayuscula y lo asigno en rta
-        }while(rta!='S'&&rta!='N');
+            }while(rta!='S'&&rta!='N');
             if(rta=='S'){
                 per[i].isEmpty=0;
                 break;
-            }
+                }
 
         }
-
     }
 }
 
