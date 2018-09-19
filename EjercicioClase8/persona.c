@@ -3,26 +3,16 @@
 #include "persona.h"
 
 
-int buscarPorDni(ePersona per[], int CANT,long int dniAux){
+int init(ePersona per[],int CANT){
     int i;
-    int retorno;
+    int retorno=-1;
     for(i=0;i<CANT;i++){
-        if(per[i].isEmpty==0)
-        {
-            if(per[i].dni==dniAux){
-                retorno=-1;
-                break;
-            }
-            else{
-                retorno=i;
-            }
-        }
-
+        per[i].isEmpty=1;
+        retorno=0;
     }
     return retorno;
 }
-
-int obtenerEspacioLibre(ePersona per[], int CANT) //para que en el alta
+int obtenerEspacioLibre(ePersona per[], int CANT)
 {
     int i,retorno=-1;
     for(i=0;i<CANT;i++){
@@ -37,18 +27,19 @@ int obtenerEspacioLibre(ePersona per[], int CANT) //para que en el alta
 void alta(ePersona per[],int CANT){
     int index,i;
     long int dniAux;
-    index=obtenerEspacioLibre(per, CANT);
+    index=init(per, CANT);
     if(index!=-1){
             //validar dni con funcion
 
             printf("Ingrese DNI: ");
             scanf("%ld",&dniAux);
-            while(buscarPorDni(per[i].dni,CANT,dniAux)==-1) {
+            if(buscarPorDni(per[i].dni,CANT,dniAux)==-1) {
                 printf("DNI existente\n");
                 printf("Reingrese DNI: \n");
-                scanf("%ld",&dniAux);
+                scanf("%ld",&per[i].dni);
                 }
-            per[i].dni=dniAux;
+
+
 
             printf("Ingrese Apellido: ");
             scanf("%s",per[i].apellido);
@@ -87,4 +78,46 @@ void baja(ePersona per[],int CANT){
     }
 }
 
+void ordenarLista(ePersona per[],int CANT){
+ePersona perAux;
+int i, j;
+    for(i=0;i<CANT-1;i++){
+        for(j=i+1;j<CANT;j++){
+            if(strcmp(per[i].apellido,per[j].apellido)>0){//Si devuelve mayor a cero i apellido es mayor que j apellido
+            /*strcpy(apellidoAux,per[i].apellido);    no se hace por que hay que escribir mucho codigo
+            strcpy(per[i].apellido,per[j].apellido);*/
+            perAux=per[i];
+            per[i]=per[j];
+            per[j]=perAux;
+            }
+            if(strcmp(per[i].apellido,per[j].apellido)==0){
+                if(strcmp(per[i].nombre,per[j].nombre)>0){
+                perAux=per[i];
+                per[i]=per[j];
+                per[j]=perAux;
+                }
+            }
 
+
+        }
+    }
+}
+
+int buscarPorDni(ePersona per[], int CANT,long int dniAux){
+    int i;
+    int retorno=-1;
+    for(i=0;i<CANT;i++){
+        if(per[i].isEmpty==0)
+        {
+            if(per[i].dni==dniAux){
+                retorno=-1;
+                break;
+            }
+            else{
+                retorno=i;
+            }
+        }
+
+    }
+    return retorno;
+}

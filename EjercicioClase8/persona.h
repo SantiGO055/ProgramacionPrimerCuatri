@@ -12,21 +12,12 @@ typedef struct{
     int isEmpty;
 }ePersona;
 
-int buscarPorDni(ePersona[], int,long int dniAux);
-/**
- * Obtiene el primer indice libre del array.
- * @param lista el array se pasa como parametro.
- * @return el primer indice disponible
- */
-int obtenerEspacioLibre(ePersona persona[], int cantidad);
+int buscarPorDni(ePersona per[],int CANT,long int dniAux);
 
-/**
- * Obtiene el indice que coincide con el dni pasado por parametro.
- * @param lista el array se pasa como parametro.
- * @param dni el dni a ser buscado en el array.
- * @return el indice en donde se encuentra el elemento que coincide con el parametro dni
- */
+int obtenerEspacioLibre(ePersona per[],int CANT);
 
-
-void alta(ePersona[], int CANT);
+void alta(ePersona per[],int CANT);
+void baja(ePersona per[],int CANT);
+void ordenarLista(ePersona per[],int CANT);
+int init(ePersona per[],int CANT);
 #endif // PERSONA_H_INCLUDED
