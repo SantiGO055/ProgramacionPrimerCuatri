@@ -3,17 +3,22 @@
 
 typedef struct{
     int id;
-    char apellido[51];
-    char nombre[51];
-    float salario;
+    char name[51];
+    char lastName[51];
+    float salary;
     int sector;
     int isEmpty;
-}eEmpleado;
+}employee;
 
-int buscarPorId(eEmpleado emp[],int CANT,int idAux);
-int obtenerEspacioLibre(eEmpleado emp[],int CANT);
-void alta(eEmpleado emp[],int CANT);
-void baja(eEmpleado emp[],int CANT);
-void ordenarLista(eEmpleado emp[],int CANT);
-int init(eEmpleado emp[],int CANT);
+
+int initEmployee(employee* ,int CANT);
+int getFreeSpace(employee* ,int CANT);
+int addEmployee(employee* ,int CANT,char name[], char lastName[], float salary,int sector,int id);
+int findEmployeeById(employee* ,int CANT, int id);
+int removeEmployee(employee* ,int CANT,int id);
+int sortEmployee(employee* ,int CANT, char name[], char lastName[]);
+int printEmployee(employee* ,int CANT);
+
+int validarCadena(char* ,int min, int max);
+
 #endif // EMPLOYEE_H_INCLUDED

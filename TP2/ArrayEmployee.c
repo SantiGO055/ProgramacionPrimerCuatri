@@ -6,7 +6,7 @@
 #include "ArrayEmployee.h"
 
 
-int init(eEmpleado emp[],int CANT){
+int initEmployee(employee* emp,int CANT){
     int i;
     int retorno=-1;
     for(i=0;i<CANT;i++){
@@ -15,7 +15,7 @@ int init(eEmpleado emp[],int CANT){
     }
     return retorno;
 }
-int obtenerEspacioLibre(eEmpleado emp[], int CANT)
+int getFreeSpace(employee* emp, int CANT)
 {
     int i,retorno=-1;
     for(i=0;i<CANT;i++){
@@ -26,78 +26,43 @@ int obtenerEspacioLibre(eEmpleado emp[], int CANT)
     }
     return retorno;
 }
-void alta(eEmpleado emp[],int CANT){
-    int index,i,idAux;
-    init(emp,CANT);
-
-    for(i=0;i<CANT;i++){
-
-            index=obtenerEspacioLibre(emp,CANT);
-            if(index!=-1){ //si hay espacio libre
-
-            system("cls");
-            printf("Ingrese ID: ");
-            fflush(stdin);
-            scanf("%d",&idAux);
-
-
-            buscarPorId(emp,CANT,idAux);
-            printf("%d",buscarPorId(emp,CANT,idAux));
-
-            while(buscarPorId(emp,CANT,idAux)!=-1) { //si es distinto de -1 es por que esta repetido el dni
-                printf("ID existente\n");
-                printf("Reingrese ID: \n");
-                fflush(stdin);
-                scanf("%d",&idAux);
-                buscarPorId(emp,CANT,idAux);
-
-                }
-
-
-
-            emp[i].id=idAux;
+int addEmployee(employee *emp,int CANT,char name[], char lastName[], float salary,int sector,int id){
+    int i;
+    i=getFreeSpace(emp,CANT);
+        if(i!=-1){ //si hay espacio libre
             emp[i].isEmpty=0;
-            printf("Ingrese Apellido: ");
-            scanf("%s",emp[i].apellido);
-            printf("Ingrese Nombre: ");
-            scanf("%s",emp[i].nombre);
-            printf("Ingrese salario: ");
-            scanf("%f",&emp[i].salario);
-            printf("Ingrese sector: ");
-            scanf("%d",&emp[i].sector);
-            }
-    }
-
+            strcpy(emp[i].name,name);
+            strcpy(emp[i].lastName,lastName);
+            emp[i].salary=salary;
+            emp[i].sector=sector;
+            emp[i].id=id;
+            return 0;
+        }
+    return 0;
 }
-int buscarPorId(eEmpleado emp[], int CANT,int idAux){
-
+int findEmployeeById(employee* emp, int CANT,int id){
     int i;
     int retorno=-1;
     for(i=0;i<CANT;i++){
         if(emp[i].isEmpty==0){ //si esta ocupado
-            if(emp[i].id==idAux){
+            if(emp[i].id==id){
                 retorno=i;
                 break;
             }
         }
     retorno=-1;
     }
-
     return retorno;
 }
 
-void baja(eEmpleado emp[],int CANT){
+int removeEmployee(employee* emp,int CANT,int id){
     int i;
-    int idAux;
     char rta;
      //muestro empleados dados de alta para elegir cual eliminar
-    imprimirEmpleados(emp,CANT);
-    printf("ID que desea eliminar: ");
-    scanf("%d",&idAux);
+    printEmployee(emp,CANT);
     for(i=0;i<CANT;i++){
-        while(idAux==emp[i].id){//lo encontro
-
-            printf("Apellido: %s Nombre: %s ID de empleado: %d\n",emp[i].apellido,emp[i].nombre,emp[i].id);
+        while(findEmployeeById(emp,CANT,id)!=-1){//lo encontro
+            printf("Apellido: %s\nNombre: %s\nID de empleado: %d\n",emp[i].lastName,emp[i].name,emp[i].id);
             do{ //validad entre s y n
             printf("Eliminar registro? S/N: ");
             fflush(stdin);
@@ -114,24 +79,22 @@ void baja(eEmpleado emp[],int CANT){
                 break;
             }
         }
-
     }
+    return 0;
 }
 
-void ordenarLista(eEmpleado emp[],int CANT){
-eEmpleado empAux;
+int sortEmployee(employee* emp,int CANT,char* name, char* lastName){
+employee empAux;
 int i, j;
     for(i=0;i<CANT-1;i++){
         if(emp[i].isEmpty==0){
             for(j=i+1;j<CANT;j++){
-                if(strcmp(emp[i].apellido,emp[j].apellido)>0){//Si devuelve mayor a cero i apellido es mayor que j apellido
-                    /*strcpy(apellidoAux,per[i].apellido);    no se hace por que hay que escribir mucho codigo
-                    strcpy(per[i].apellido,per[j].apellido);*/
+                if(strcmp(emp[i].lastName,emp[j].lastName)>0){
                     empAux=emp[i];
                     emp[i]=emp[j];
                     emp[j]=empAux;
                 }
-                if(strcmp(emp[i].apellido,emp[j].apellido)==0){
+                if(strcmp(emp[i].lastName,emp[j].lastName)==0){
                     if(emp[i].sector>emp[j].sector){
                     empAux=emp[i];
                     emp[i]=emp[j];
@@ -140,16 +103,37 @@ int i, j;
                 }
             }
         }
-
     }
-
+    return 0;
 }
 
-void imprimirEmpleados(eEmpleado emp[],int CANT){
+int printEmployee(employee* emp,int CANT){
     int i;
     for(i=0;i<CANT;i++){
         if(emp[i].isEmpty==0){
-            printf("Apellido: %s ID: %d\n",emp[i].apellido,emp[i].id);
+            printf("Apellido: %s ID: %d\n",emp[i].lastName,emp[i].id);
         }
     }
+    return 0;
+}
+
+int validarCadena(char* emp, int min, int max){
+    int i;
+    int retorno;
+    int largo;
+    largo=strlen(emp);
+
+    for(i=0;emp!='\0';i++){
+        if((emp[i] != ' ') && (emp[i] < 'a' || emp[i] > 'z') && (emp[i] < 'A' || emp[i] > 'Z')){
+            retorno=-1;
+            break;
+        }
+        else if(largo<min||largo>max){
+            retorno=0;
+        }
+        else{
+            retorno=1;
+        }
+    }
+    return retorno;
 }

@@ -3,12 +3,14 @@
 #include <string.h>
 #include <ctype.h>
 #include "ArrayEmployee.h"
-#define CANT 1
+#define CANT 3
 
 int main()
 {
-    int opcion;
-    eEmpleado emp[CANT];
+    int opcion,sector,flag=0,id=0;
+    char name[51], lastName[51];
+    float salary;
+    employee emp[CANT];
     do{
     if(opcion!=3&&opcion!=4){
     }
@@ -21,18 +23,35 @@ int main()
         scanf("%d",&opcion);
         switch(opcion){
             case 1:
-                alta(emp,CANT);
+                if(flag==0){
+                    if(initEmployee(emp,CANT)==0){
+                        initEmployee(emp,CANT);
+                        flag=1;
+                    }
+                }
+                if(getFreeSpace(emp,CANT)!=-1){
+                    id++;
+                }
+                printf("Ingrese Nombre: ");
+                scanf("%s",name);
+                printf("Ingrese Apellido: ");
+                scanf("%s",lastName);
+                printf("Ingrese Salario: ");
+                scanf("%f",&salary);
+                printf("Ingrese Sector: ");
+                scanf("%d",&sector);
+                addEmployee(emp,CANT, name, lastName,salary,sector,id);
                 system("cls");
                 printf("Accion: Empleado agregado correctamente\n");
                 break;
             case 2:
-                baja(emp,CANT);
+                printf("Ingrese id a eliminar");
+                scanf("%d",&id);
+                removeEmployee(emp,CANT,id);
                 break;
             case 3:
-                ordenarLista(emp,CANT);
-                system("cls");
-                printf("Listado de empleados: ");
-                imprimirEmpleados(emp,CANT);
+                sortEmployee(emp,CANT,name,lastName);
+                printEmployee(emp,CANT);
                 break;
 
         }
