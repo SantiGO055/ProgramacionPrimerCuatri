@@ -26,8 +26,8 @@ int getFreeSpace(employee* emp, int CANT)
     }
     return retorno;
 }
-int addEmployee(employee *emp,int CANT,char name[], char lastName[], float salary,int sector,int id){
-    int i;
+int addEmployee(employee *emp,int CANT,char* name, char* lastName, float salary,int sector,int id){
+    int i,retorno=-1;
     i=getFreeSpace(emp,CANT);
         if(i!=-1){ //si hay espacio libre
             emp[i].isEmpty=0;
@@ -36,9 +36,9 @@ int addEmployee(employee *emp,int CANT,char name[], char lastName[], float salar
             emp[i].salary=salary;
             emp[i].sector=sector;
             emp[i].id=id;
-            return 0;
+            retorno=0;
         }
-    return 0;
+    return retorno;
 }
 int findEmployeeById(employee* emp, int CANT,int id){
     int i;
@@ -89,29 +89,43 @@ int i, j;
     for(i=0;i<CANT-1;i++){
         if(emp[i].isEmpty==0){
             for(j=i+1;j<CANT;j++){
+                if(emp[i].sector>emp[j].sector){
+                    empAux=emp[i];
+                    emp[i]=emp[j];
+                    emp[j]=empAux;
+                }
+            }
+            for(j=i+1;j<CANT;j++){
                 if(strcmp(emp[i].lastName,emp[j].lastName)>0){
                     empAux=emp[i];
                     emp[i]=emp[j];
                     emp[j]=empAux;
                 }
                 if(strcmp(emp[i].lastName,emp[j].lastName)==0){
-                    if(emp[i].sector>emp[j].sector){
                     empAux=emp[i];
                     emp[i]=emp[j];
                     emp[j]=empAux;
                     }
-                }
             }
         }
     }
     return 0;
+}
+int firstEmployee(int flag){
+    int retorno=-1;
+    if(flag!=1){
+        system("cls");
+        printf("ERROR! Debera realizar la carga de un empleado al menos!\n");
+        retorno=0;
+    }
+    return retorno;
 }
 
 int printEmployee(employee* emp,int CANT){
     int i;
     for(i=0;i<CANT;i++){
         if(emp[i].isEmpty==0){
-            printf("Apellido: %s ID: %d\n",emp[i].lastName,emp[i].id);
+            printf("Empleado:\nApellido: %s Sector: %d ID: %d\n",emp[i].lastName,emp[i].sector,emp[i].id);
         }
     }
     return 0;
@@ -136,4 +150,10 @@ int validarCadena(char* emp, int min, int max){
         }
     }
     return retorno;
+}
+void modifyEmployee(employee *emp,int CANT,char* name, char* lastName, float salary,int sector,int id){
+            strcpy(emp[id].name,name);
+            strcpy(emp[id].lastName,lastName);
+            emp[id].salary=salary;
+            emp[id].sector=sector;
 }
