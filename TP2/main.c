@@ -13,10 +13,10 @@ int main()
     employee emp[CANT];
     do{
     printf("\tMenu\n");
-        printf("1- Alta empleado\n");
-        printf("2- Modificar empleado\n");
-        printf("3- Baja empleado\n");
-        printf("4- Imprimir empleado\n\n");
+        printf("1- Alta empleados\n");
+        printf("2- Modificar empleados\n");
+        printf("3- Baja empleados\n");
+        printf("4- Imprimir empleados\n\n");
         printf("5- Salir\n");
         scanf("%d",&opcion);
         switch(opcion){
@@ -32,6 +32,10 @@ int main()
                     id++;
                     contEmp++;
                 }
+                else{
+                    printf("No hay espacio para agregar empleados!");
+                    break;
+                }
                 printf("Ingrese Nombre: ");
                 scanf("%s",name);
                 printf("Ingrese Apellido: ");
@@ -46,7 +50,7 @@ int main()
                 break;
             case 2:
                 system("cls");
-                if(firstEmployee(flag)!=0){
+                if(firstEmployee(flag)!=0){ //si no es la primera vez
                     printEmployee(emp,CANT);
                     printf("Ingrese id a modificar: ");
                     scanf("%d",&idAux);
@@ -60,7 +64,8 @@ int main()
                         scanf("%f",&salary);
                         printf("Ingrese Sector: ");
                         scanf("%d",&sector);
-                        modifyEmployee(emp,CANT, name, lastName,salary,sector,findEmployeeAux);
+                        modifyEmployee(emp,CANT, name, lastName,
+                                       salary,sector,findEmployeeAux);
                         system("cls");
                         printf("Accion: Empleado modificado correctamente\n");
                     }
@@ -72,20 +77,27 @@ int main()
                 break;
             case 3:
                 system("cls");
-                if(firstEmployee(flag)!=0){
-                    printEmployee(emp,CANT);
-                    printf("Ingrese id a eliminar: ");
-                    scanf("%d",&id);
-                    removeEmployee(emp,CANT,id);
+                if(firstEmployee(flag)!=0){ //si no es la primera vez
+                        printEmployee(emp,CANT);
+                        printf("Ingrese id a eliminar: ");
+                        scanf("%d",&id);
+                        removeEmployee(emp,CANT,id);
                 }
                 break;
             case 4:
                 system("cls");
-                if(firstEmployee(flag)!=0){
-                    sortEmployee(emp,CANT,name,lastName);
-                    printEmployee(emp,CANT);
-                    printf("El promedio de salarios es: %d\n",averageSalary(emp,CANT));
+                if(firstEmployee(flag)!=0){ //si no es la primera vez
 
+                        sortEmployee(emp,CANT,name,lastName);
+                        printEmployee(emp,CANT);
+                        if(totalSalary(emp,CANT)!=-1)
+                            printf("El total de salarios es: %.02f\n",totalSalary(emp,CANT));
+                        if(averageSalary(emp,CANT)!=-1)
+                            printf("El promedio de salarios es: %d\n",
+                                   averageSalary(emp,CANT));
+                        if(excSalary(emp,CANT)!=-1)
+                        printf("La cantidad de empleados que superan el salario promedio es de: %d\n",excSalary(emp,CANT));
+                        printf("_________________________________________________________\n");
                     break;
                 }
             }

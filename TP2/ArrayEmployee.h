@@ -13,7 +13,7 @@ typedef struct{
 
 int initEmployee(employee*,int);
 int getFreeSpace(employee*,int);
-int addEmployee(employee*,int,char*,char*,float,int,int );
+int addEmployee(employee*,int,char*,char*,float,int,int);
 int findEmployeeById(employee*,int,int id);
 int removeEmployee(employee*,int,int);
 int sortEmployee(employee*,int,char*,char*);
@@ -22,4 +22,6 @@ int firstEmployee(int);
 void modifyEmployee(employee*,int,char*,char*,float,int,int);
 int validarCadena(char*,int,int);
 int averageSalary(employee*,int);
-#endif // EMPLOYEE_H_INCLUDED
+float totalSalary(employee*,int);
+int excSalary(employee*,int);
+#endif // ARRAYEMPLOYEE_H_INCLUDED

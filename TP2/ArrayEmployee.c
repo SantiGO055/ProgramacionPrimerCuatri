@@ -15,18 +15,18 @@ int initEmployee(employee* emp,int CANT){
     }
     return retorno;
 }
-int getFreeSpace(employee* emp, int CANT)
-{
+int getFreeSpace(employee* emp, int CANT){
     int i,retorno=-1;
     for(i=0;i<CANT;i++){
         if(emp[i].isEmpty==1){ //encontro un lugar libre
-            retorno=i;
+            retorno=i; //si es distinto de -1 esta libre
             break;
         }
     }
     return retorno;
 }
-int addEmployee(employee *emp,int CANT,char* name, char* lastName, float salary,int sector,int id){
+int addEmployee(employee *emp,int CANT,char* name,
+                char* lastName, float salary,int sector,int id){
     int i,retorno=-1;
     i=getFreeSpace(emp,CANT);
         if(i!=-1){ //si hay espacio libre
@@ -86,8 +86,8 @@ int removeEmployee(employee* emp,int CANT,int id){
 }
 
 int sortEmployee(employee* emp,int CANT,char* name, char* lastName){
-employee empAux;
-int i, j;
+    employee empAux;
+    int i, j;
     for(i=0;i<CANT-1;i++){
         if(emp[i].isEmpty==0){
             for(j=i+1;j<CANT;j++){
@@ -107,7 +107,7 @@ int i, j;
                     empAux=emp[i];
                     emp[i]=emp[j];
                     emp[j]=empAux;
-                    }
+                }
             }
         }
     }
@@ -124,14 +124,17 @@ int firstEmployee(int flag){
 }
 
 int printEmployee(employee* emp,int CANT){
-    int i;
+    int i,retorno=-1;
     for(i=0;i<CANT;i++){
         if(emp[i].isEmpty==0){
-            printf("Empleado:\nApellido: %s Sector: %d ID: %d\n",
+            printf("\tEmpleado:\nApellido: %s Sector: %d ID: %d\n",
                    emp[i].lastName,emp[i].sector,emp[i].id);
+            printf("_________________________________________________________\n");
+            retorno=i;
         }
+
     }
-    return 0;
+    return retorno;
 }
 
 int validarCadena(char* emp, int min, int max){
@@ -154,7 +157,8 @@ int validarCadena(char* emp, int min, int max){
     }
     return retorno;
 }
-void modifyEmployee(employee *emp,int CANT,char* name, char* lastName, float salary,int sector,int id){
+void modifyEmployee(employee *emp,int CANT,char* name,
+                    char* lastName, float salary,int sector,int id){
             strcpy(emp[id].name,name);
             strcpy(emp[id].lastName,lastName);
             emp[id].salary=salary;
@@ -162,10 +166,43 @@ void modifyEmployee(employee *emp,int CANT,char* name, char* lastName, float sal
 }
 
 int averageSalary(employee* emp,int CANT){
-    int i,avAux;
+    int i,retorno=-1;
     float salaryAux=0;
     for(i=0;i<CANT;i++){
-        salaryAux+=emp[i].salary;
+        if(emp[i].isEmpty==0){
+            salaryAux+=emp[i].salary;
+            retorno=i;
+        }
+        else{
+            retorno=-1;
+        }
     }
-    return avAux=salaryAux/(i-1);
+    if(retorno!=-1){
+        retorno=salaryAux/(i-1);
+    }
+    return retorno;
+}
+
+float totalSalary(employee* emp,int CANT){
+    int i,retorno=-1;
+    float totalSalary=0;
+    for(i=0;i<CANT;i++){
+        if(emp[i].isEmpty==0){
+            totalSalary+=emp[i].salary;
+            retorno=totalSalary;
+        }
+    }
+    return retorno;
+}
+int excSalary(employee* emp,int CANT){
+    int i,retorno=-1,count=0;
+    for(i=0;i<CANT;i++){
+        if(emp[i].isEmpty==0){
+            if(emp[i].salary>=averageSalary(emp,CANT)){
+                count++;
+            }
+            retorno=count;
+        }
+    }
+    return retorno;
 }
