@@ -56,17 +56,15 @@ int findEmployeeById(employee* emp, int CANT,int id){
 }
 
 int removeEmployee(employee* emp,int CANT,int id){
-    int i;
+    int i,iAux;
     char rta;
-     //muestro empleados dados de alta para elegir cual eliminar
-    printEmployee(emp,CANT);
     for(i=0;i<CANT;i++){
-        while(findEmployeeById(emp,CANT,id)!=-1){//lo encontro
-            printf("Apellido: %s\nNombre: %s\nID de empleado: %d\n",emp[i].lastName,emp[i].name,emp[i].id);
+        iAux=findEmployeeById(emp,CANT,id);
+        if(iAux!=-1){//lo encontro
             do{ //validad entre s y n
             printf("Eliminar registro? S/N: ");
             fflush(stdin);
-            rta=toupper(getch()); //lo que tecleo lo paso a mayuscula y lo asigno en rta
+            rta=toupper(getch());
             }while(rta!='S'&&rta!='N');
             if(rta=='S'){
                 emp[i].isEmpty=1;
@@ -78,6 +76,10 @@ int removeEmployee(employee* emp,int CANT,int id){
                 system("cls");
                 break;
             }
+        }
+        else{
+            system("cls");
+            printf("No se encuentra el ID\n");
         }
     }
     return 0;
@@ -115,7 +117,7 @@ int firstEmployee(int flag){
     int retorno=-1;
     if(flag!=1){
         system("cls");
-        printf("ERROR! Debera realizar la carga de un empleado al menos!\n");
+        printf("ERROR! Debera realizar la carga de un empleado\n");
         retorno=0;
     }
     return retorno;
@@ -125,7 +127,8 @@ int printEmployee(employee* emp,int CANT){
     int i;
     for(i=0;i<CANT;i++){
         if(emp[i].isEmpty==0){
-            printf("Empleado:\nApellido: %s Sector: %d ID: %d\n",emp[i].lastName,emp[i].sector,emp[i].id);
+            printf("Empleado:\nApellido: %s Sector: %d ID: %d\n",
+                   emp[i].lastName,emp[i].sector,emp[i].id);
         }
     }
     return 0;
@@ -138,7 +141,7 @@ int validarCadena(char* emp, int min, int max){
     largo=strlen(emp);
 
     for(i=0;emp!='\0';i++){
-        if((emp[i] != ' ') && (emp[i] < 'a' || emp[i] > 'z') && (emp[i] < 'A' || emp[i] > 'Z')){
+        if((emp[i]!=' ')&&(emp[i]<'a'||emp[i]>'z')&&(emp[i]<'A'||emp[i]>'Z')){
             retorno=-1;
             break;
         }
@@ -156,4 +159,13 @@ void modifyEmployee(employee *emp,int CANT,char* name, char* lastName, float sal
             strcpy(emp[id].lastName,lastName);
             emp[id].salary=salary;
             emp[id].sector=sector;
+}
+
+int averageSalary(employee* emp,int CANT){
+    int i,avAux;
+    float salaryAux=0;
+    for(i=0;i<CANT;i++){
+        salaryAux+=emp[i].salary;
+    }
+    return avAux=salaryAux/(i-1);
 }

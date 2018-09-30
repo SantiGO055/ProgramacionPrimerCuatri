@@ -45,6 +45,7 @@ int main()
                 printf("Accion: Empleado agregado correctamente\n");
                 break;
             case 2:
+                system("cls");
                 if(firstEmployee(flag)!=0){
                     printEmployee(emp,CANT);
                     printf("Ingrese id a modificar: ");
@@ -73,19 +74,18 @@ int main()
                 system("cls");
                 if(firstEmployee(flag)!=0){
                     printEmployee(emp,CANT);
-                    printf("Ingrese id a eliminar");
+                    printf("Ingrese id a eliminar: ");
                     scanf("%d",&id);
                     removeEmployee(emp,CANT,id);
                 }
-                else{
-                    system("cls");
-                    printf("No se encuentra el ID\n");
-                }
                 break;
             case 4:
+                system("cls");
                 if(firstEmployee(flag)!=0){
                     sortEmployee(emp,CANT,name,lastName);
                     printEmployee(emp,CANT);
+                    printf("El promedio de salarios es: %d\n",averageSalary(emp,CANT));
+
                     break;
                 }
             }
