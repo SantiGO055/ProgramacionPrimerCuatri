@@ -9,14 +9,14 @@
 
 1537726774 d:\proyectos c\tp2\employee.h
 
-1538336773 source:d:\proyectos c\tp2\main.c
+1538341619 source:d:\proyectos c\tp2\main.c
 	<stdio.h>
 	<stdlib.h>
 	<string.h>
 	<ctype.h>
 	"ArrayEmployee.h"
 
-1538336975 source:d:\proyectos c\tp2\arrayemployee.c
+1538341068 source:d:\proyectos c\tp2\arrayemployee.c
 	<stdlib.h>
 	<stdio.h>
 	<string.h>

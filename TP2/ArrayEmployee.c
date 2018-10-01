@@ -30,6 +30,7 @@ int addEmployee(employee *emp,int CANT,char* name,
     int i,retorno=-1;
     i=getFreeSpace(emp,CANT);
         if(i!=-1){ //si hay espacio libre
+
             emp[i].isEmpty=0;
             strcpy(emp[i].name,name);
             strcpy(emp[i].lastName,lastName);
@@ -37,6 +38,7 @@ int addEmployee(employee *emp,int CANT,char* name,
             emp[i].sector=sector;
             emp[i].id=id;
             retorno=0;
+
         }
     return retorno;
 }
@@ -56,32 +58,30 @@ int findEmployeeById(employee* emp, int CANT,int id){
 }
 
 int removeEmployee(employee* emp,int CANT,int id){
-    int i,iAux;
+    int iAux;
     char rta;
-    for(i=0;i<CANT;i++){
         iAux=findEmployeeById(emp,CANT,id);
         if(iAux!=-1){//lo encontro
-            do{ //validad entre s y n
+            do{
             printf("Eliminar registro? S/N: ");
             fflush(stdin);
             rta=toupper(getch());
             }while(rta!='S'&&rta!='N');
             if(rta=='S'){
-                emp[i].isEmpty=1;
+                emp[iAux].isEmpty=1;
                 system("cls");
                 printf("Accion: Registro eliminado correctamente\n");
-                break;
                 }
             if(rta=='N'){
                 system("cls");
-                break;
+                printf("Accion: No se elimino el registro\n");
             }
         }
         else{
             system("cls");
             printf("No se encuentra el ID\n");
         }
-    }
+
     return 0;
 }
 
@@ -97,6 +97,9 @@ int sortEmployee(employee* emp,int CANT,char* name, char* lastName){
                     emp[j]=empAux;
                 }
             }
+        }
+    }
+    for(i=0;i<CANT-1;i++){
             for(j=i+1;j<CANT;j++){
                 if(strcmp(emp[i].lastName,emp[j].lastName)>0){
                     empAux=emp[i];
@@ -110,7 +113,7 @@ int sortEmployee(employee* emp,int CANT,char* name, char* lastName){
                 }
             }
         }
-    }
+
     return 0;
 }
 int firstEmployee(int flag){
@@ -129,7 +132,7 @@ int printEmployee(employee* emp,int CANT){
         if(emp[i].isEmpty==0){
             printf("\tEmpleado:\nApellido: %s Sector: %d ID: %d\n",
                    emp[i].lastName,emp[i].sector,emp[i].id);
-            printf("_________________________________________________________\n");
+            printf("___________________________________________________________________\n");
             retorno=i;
         }
 
@@ -157,6 +160,7 @@ int validarCadena(char* emp, int min, int max){
     }
     return retorno;
 }
+
 void modifyEmployee(employee *emp,int CANT,char* name,
                     char* lastName, float salary,int sector,int id){
             strcpy(emp[id].name,name);

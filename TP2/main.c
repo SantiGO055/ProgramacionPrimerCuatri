@@ -7,7 +7,7 @@
 
 int main()
 {
-    int opcion,sector,flag=0,id=0,findEmployeeAux,idAux,contEmp=0;
+    int opcion,sector,flag=0,id=0,findEmployeeAux,idAux,contEmp=0,idRem;
     char name[51], lastName[51];
     float salary;
     employee emp[CANT];
@@ -33,7 +33,7 @@ int main()
                     contEmp++;
                 }
                 else{
-                    printf("No hay espacio para agregar empleados!");
+                    printf("No hay espacio para agregar empleados!\n");
                     break;
                 }
                 printf("Ingrese Nombre: ");
@@ -80,8 +80,8 @@ int main()
                 if(firstEmployee(flag)!=0){ //si no es la primera vez
                         printEmployee(emp,CANT);
                         printf("Ingrese id a eliminar: ");
-                        scanf("%d",&id);
-                        removeEmployee(emp,CANT,id);
+                        scanf("%d",&idRem);
+                        removeEmployee(emp,CANT,idRem);
                 }
                 break;
             case 4:
@@ -97,7 +97,7 @@ int main()
                                    averageSalary(emp,CANT));
                         if(excSalary(emp,CANT)!=-1)
                         printf("La cantidad de empleados que superan el salario promedio es de: %d\n",excSalary(emp,CANT));
-                        printf("_________________________________________________________\n");
+                        printf("___________________________________________________________________\n");
                     break;
                 }
             }
