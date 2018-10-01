@@ -2,9 +2,9 @@
 #include <stdlib.h>
 #include <string.h>
 #include <ctype.h>
-#include "ArrayEmployee.h"
-#define CANT 3
-
+#include "func.h"
+#define CANT 1000
+#define CHAR 51
 int main()
 {
     int opcion,sector,flag=0,id=0,findEmployeeAux,idAux,contEmp=0,idRem;
@@ -36,34 +36,26 @@ int main()
                     printf("No hay espacio para agregar empleados!\n");
                     break;
                 }
-                printf("Ingrese Nombre: ");
-                scanf("%s",name);
-                printf("Ingrese Apellido: ");
-                scanf("%s",lastName);
-                printf("Ingrese Salario: ");
-                scanf("%f",&salary);
-                printf("Ingrese Sector: ");
-                scanf("%d",&sector);
+                utn_getStringAvanzado(name,"Ingrese nombre: ","ERROR! El nombre debe ser solo letras\n",CHAR,2);
+                utn_getStringAvanzado(lastName,"Ingrese apellido: ","ERROR! El apellido debe ser solo letras\n",CHAR,2);
+                utn_getFlotante(&salary,"Ingrese salario: ","ERROR! Ingrese salario positivo\n",1,100000,2);
+                utn_getEntero(&sector,"Ingrese sector","ERROR! Ingrese numeros entre 1 y 200\n",1,200,2);
                 addEmployee(emp,CANT, name, lastName,salary,sector,id);
                 system("cls");
                 printf("Accion: Empleado agregado correctamente\n");
                 break;
             case 2:
                 system("cls");
+
                 if(firstEmployee(flag)!=0){ //si no es la primera vez
                     printEmployee(emp,CANT);
-                    printf("Ingrese id a modificar: ");
-                    scanf("%d",&idAux);
+                    utn_getEntero(&idAux,"Ingrese ID a modificar: ","ERROR! Ingrese numero entre 1 y 1000\n",1,1000,2);
                     findEmployeeAux=findEmployeeById(emp,CANT,idAux);
                     if(findEmployeeAux!=-1){ //si lo encontro
-                        printf("Ingrese Nombre: ");
-                        scanf("%s",name);
-                        printf("Ingrese Apellido: ");
-                        scanf("%s",lastName);
-                        printf("Ingrese Salario: ");
-                        scanf("%f",&salary);
-                        printf("Ingrese Sector: ");
-                        scanf("%d",&sector);
+                        utn_getStringAvanzado(name,"Ingrese nombre: ","ERROR! El nombre debe ser solo letras\n",CHAR,2);
+                        utn_getStringAvanzado(lastName,"Ingrese apellido: ","ERROR! El apellido debe ser solo letras\n",CHAR,2);
+                        utn_getFlotante(&salary,"Ingrese salario: ","ERROR! Ingrese salario positivo\n",1,100000,2);
+                        utn_getEntero(&sector,"Ingrese sector: ","ERROR! Ingrese numeros entre 1 y 200\n",1,200,2);
                         modifyEmployee(emp,CANT, name, lastName,
                                        salary,sector,findEmployeeAux);
                         system("cls");
@@ -79,8 +71,8 @@ int main()
                 system("cls");
                 if(firstEmployee(flag)!=0){ //si no es la primera vez
                         printEmployee(emp,CANT);
-                        printf("Ingrese id a eliminar: ");
-                        scanf("%d",&idRem);
+                        utn_getEntero(&idRem,"Ingrese ID a eliminar: ","ERROR! Ingrese numero entre 1 y 1000\n",1,1000,2);
+
                         removeEmployee(emp,CANT,idRem);
                 }
                 break;

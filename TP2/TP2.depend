@@ -9,14 +9,14 @@
 
 1537726774 d:\proyectos c\tp2\employee.h
 
-1538341619 source:d:\proyectos c\tp2\main.c
+1538424948 source:d:\proyectos c\tp2\main.c
 	<stdio.h>
 	<stdlib.h>
 	<string.h>
 	<ctype.h>
-	"ArrayEmployee.h"
+	"func.h"
 
-1538341068 source:d:\proyectos c\tp2\arrayemployee.c
+1538424664 source:d:\proyectos c\tp2\arrayemployee.c
 	<stdlib.h>
 	<stdio.h>
 	<string.h>
@@ -24,5 +24,17 @@
 	<conio.h>
 	"ArrayEmployee.h"
 
-1538319670 d:\proyectos c\tp2\arrayemployee.h
+1538422578 d:\proyectos c\tp2\arrayemployee.h
+
+1538344887 d:\proyectos c\tp2\utn.h
+
+1538425039 source:d:\proyectos c\tp2\func.c
+	<stdlib.h>
+	<stdio.h>
+	<string.h>
+	<ctype.h>
+	<conio.h>
+	"func.h"
+
+1538424841 d:\proyectos c\tp2\func.h
 
