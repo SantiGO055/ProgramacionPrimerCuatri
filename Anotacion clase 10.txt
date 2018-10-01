@@ -1,0 +1,19 @@
+Estructuras:
+
+eEmpleado
+dni
+apellido
+nombre
+eFecha feNac
+idPais (int) ------->no se anida la estructura, es clave foranea o fk
+
+ePais:
+id (int) ----->primary key (pk)
+descripcion (char 31)
+
+
+1 Argentina
+2 Peru
+3 Uruguay
+
+Se asocian recorriendo los vectores preguntando si idPais de eEmpleado es igual a id de ePais
