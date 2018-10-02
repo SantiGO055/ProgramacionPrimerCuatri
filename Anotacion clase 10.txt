@@ -6,14 +6,33 @@ apellido
 nombre
 eFecha feNac
 idPais (int) ------->no se anida la estructura, es clave foranea o fk
+idAlmuerzo
+isEmpty
 
 ePais:
 id (int) ----->primary key (pk)
 descripcion (char 31)
-
+isEmpty
 
 1 Argentina
 2 Peru
 3 Uruguay
 
+eAlmuerzo:
+id
+descripcion
+
 Se asocian recorriendo los vectores preguntando si idPais de eEmpleado es igual a id de ePais
+---------------------------------------------------------------------------
+Para agregar una estructura eAlmuerzo se debera crear dos estructuras para relacionar eEmpleado y eAlmuerzo:
+
+Seria:
+ePersonaAlmuerzo:
+idPersona
+idAlmuerzo
+isEmpty
+
+
+Recorro eEmpleado y dentro recorro ePersonaAlmuerzo
+multiplico la cantidad maxima de empleados por la cantidad maxima de los almuerzos para ver si todas las personas comen todos los almuerzos.
+pregunto si empleado.dni es igual a emplAlm.idpersona
