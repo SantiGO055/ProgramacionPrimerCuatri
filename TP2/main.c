@@ -7,7 +7,7 @@
 #define CHAR 51
 int main()
 {
-    int opcion,sector,flag=0,id=0,findEmployeeAux,idAux,contEmp=0,idRem;
+    int opcion,sector,flag=0,id=0,findEmployeeAux,idAux,contEmp=0,idRem,opcionOrd;
     char name[51], lastName[51];
     float salary;
     employee emp[CANT];
@@ -79,8 +79,10 @@ int main()
             case 4:
                 system("cls");
                 if(firstEmployee(flag)!=0){ //si no es la primera vez
-
-                        sortEmployee(emp,CANT,name,lastName);
+                utn_getEntero(&opcionOrd,"Ingrese el orden de ordenamiento, 1 para ascendente y 0 para descendente: ","ERROR! Ingrese numero 0 o 1\n",0,1,2);
+                switch(opcionOrd){
+                    case 1:
+                        sortEmployee(emp,CANT,name,lastName,opcionOrd);
                         printEmployee(emp,CANT);
                         if(totalSalary(emp,CANT)!=-1)
                             printf("El total de salarios es: %.02f\n",totalSalary(emp,CANT));
@@ -91,7 +93,21 @@ int main()
                         printf("La cantidad de empleados que superan el salario promedio es de: %d\n",excSalary(emp,CANT));
                         printf("___________________________________________________________________\n");
                     break;
+                    case 0:
+                        sortEmployee(emp,CANT,name,lastName,opcionOrd);
+                        printEmployee(emp,CANT);
+                        if(totalSalary(emp,CANT)!=-1)
+                            printf("El total de salarios es: %.02f\n",totalSalary(emp,CANT));
+                        if(averageSalary(emp,CANT)!=-1)
+                            printf("El promedio de salarios es: %d\n",
+                                   averageSalary(emp,CANT));
+                        if(excSalary(emp,CANT)!=-1)
+                        printf("La cantidad de empleados que superan el salario promedio es de: %d\n",excSalary(emp,CANT));
+                        printf("___________________________________________________________________\n");
+                        break;
+                    }
                 }
+                break;
             }
     }while(opcion!=5);
 

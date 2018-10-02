@@ -16,7 +16,7 @@ int getFreeSpace(employee*,int);
 int addEmployee(employee*,int,char*,char*,float,int,int);
 int findEmployeeById(employee*,int,int id);
 int removeEmployee(employee*,int,int);
-int sortEmployee(employee*,int,char*,char*);
+int sortEmployee(employee*,int,char*,char*,int);
 int printEmployee(employee*,int);
 int firstEmployee(int);
 void modifyEmployee(employee*,int,char*,char*,float,int,int);

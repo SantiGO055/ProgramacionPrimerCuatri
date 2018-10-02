@@ -85,35 +85,64 @@ int removeEmployee(employee* emp,int CANT,int id){
     return 0;
 }
 
-int sortEmployee(employee* emp,int CANT,char* name, char* lastName){
+int sortEmployee(employee* emp,int CANT,char* name, char* lastName,int opcion){
     employee empAux;
     int i, j;
-    for(i=0;i<CANT-1;i++){
-        if(emp[i].isEmpty==0){
-            for(j=i+1;j<CANT;j++){
-                if(emp[i].sector>emp[j].sector){
-                    empAux=emp[i];
-                    emp[i]=emp[j];
-                    emp[j]=empAux;
+    if(opcion==1){
+        for(i=0;i<CANT-1;i++){
+            if(emp[i].isEmpty==0){
+                for(j=i+1;j<CANT;j++){
+                    if(emp[i].sector>emp[j].sector){
+                        empAux=emp[i];
+                        emp[i]=emp[j];
+                        emp[j]=empAux;
+                    }
                 }
             }
         }
+        for(i=0;i<CANT-1;i++){
+                for(j=i+1;j<CANT;j++){
+                    if(strcmp(emp[i].lastName,emp[j].lastName)>0&&emp[i].sector==emp[j].sector){
+                        empAux=emp[i];
+                        emp[i]=emp[j];
+                        emp[j]=empAux;
+                    }
+                    if(strcmp(emp[i].lastName,emp[j].lastName)==0&&emp[i].sector==emp[j].sector){
+                        empAux=emp[i];
+                        emp[i]=emp[j];
+                        emp[j]=empAux;
+                    }
+                }
+            }
     }
-    for(i=0;i<CANT-1;i++){
-            for(j=i+1;j<CANT;j++){
-                if(strcmp(emp[i].lastName,emp[j].lastName)>0&&emp[i].sector==emp[j].sector){
-                    empAux=emp[i];
-                    emp[i]=emp[j];
-                    emp[j]=empAux;
-                }
-                if(strcmp(emp[i].lastName,emp[j].lastName)==0&&emp[i].sector==emp[j].sector){
-                    empAux=emp[i];
-                    emp[i]=emp[j];
-                    emp[j]=empAux;
+
+    if(opcion==0){
+        for(i=0;i<CANT-1;i++){
+            if(emp[i].isEmpty==0){
+                for(j=i+1;j<CANT;j++){
+                    if(emp[i].sector<emp[j].sector){
+                        empAux=emp[i];
+                        emp[i]=emp[j];
+                        emp[j]=empAux;
+                    }
                 }
             }
         }
-
+        for(i=0;i<CANT-1;i++){
+                for(j=i+1;j<CANT;j++){
+                    if(strcmp(emp[i].lastName,emp[j].lastName)<0&&emp[i].sector==emp[j].sector){
+                        empAux=emp[i];
+                        emp[i]=emp[j];
+                        emp[j]=empAux;
+                    }
+                    if(strcmp(emp[i].lastName,emp[j].lastName)==0&&emp[i].sector==emp[j].sector){
+                        empAux=emp[i];
+                        emp[i]=emp[j];
+                        emp[j]=empAux;
+                    }
+                }
+            }
+    }
     return 0;
 }
 int firstEmployee(int flag){

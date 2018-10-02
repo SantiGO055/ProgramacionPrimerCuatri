@@ -38,3 +38,20 @@
 
 1538424841 d:\proyectos c\tp2\func.h
 
+1538414869 source:d:\gonzalez santiago\programacionprimercuatri-master\tp2\main.c
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	<ctype.h>
+	"func.h"
+
+1538414129 d:\gonzalez santiago\programacionprimercuatri-master\tp2\func.h
+
+1538414129 source:d:\gonzalez santiago\programacionprimercuatri-master\tp2\func.c
+	<stdlib.h>
+	<stdio.h>
+	<string.h>
+	<ctype.h>
+	<conio.h>
+	"func.h"
+
