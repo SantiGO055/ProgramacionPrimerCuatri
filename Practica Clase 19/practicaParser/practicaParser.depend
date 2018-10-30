@@ -1,0 +1,14 @@
+# depslib dependency file v1.0
+1540856889 source:c:\users\alumno\desktop\practica clase 19\practicaparser\main.c
+	<stdio.h>
+	<stdlib.h>
+	"persona.h"
+
+1540855303 c:\users\alumno\desktop\practica clase 19\practicaparser\persona.h
+
+1540856684 source:c:\users\alumno\desktop\practica clase 19\practicaparser\persona.c
+	<stdlib.h>
+	<stdio.h>
+	<string.h>
+	"persona.h"
+
