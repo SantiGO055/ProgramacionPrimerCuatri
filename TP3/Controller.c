@@ -11,9 +11,25 @@
  * \return int
  *
  */
+
+//abro archivo, si esta todo ok
 int controller_loadFromText(char* path , LinkedList* pArrayListEmployee)
 {
-    return 1;
+    FILE *pFile;
+    int r,i=0;
+    if (path!=NULL && pArrayListEmployee!= NULL){
+        //aca dentro abro el archivo y llamo a la funcion parser para cargar los datos al array
+        pFile=fopen(path,"r");
+        if (pFile)==NULL){
+            printf("El archivo no puede ser abierto");
+            return retorno;
+        }
+        else {
+            parser_EmployeeFromText(pFile,pArrayListEmployee);
+        }
+    }
+    fclose(pFile);
+    return retorno;
 }
 
 /** \brief Carga los datos de los empleados desde el archivo data.csv (modo binario).
