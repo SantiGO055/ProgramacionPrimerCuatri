@@ -8,9 +8,9 @@ typedef struct
     int sueldo;
 }Employee;
 
-Employee* employee_new();
+Employee* employee_new(char* id, char* name, char* horasTrabajadas, char* sueldo);
 
-Employee* employee_newParametros(char* idStr,char* nombreStr,char* horasTrabajadasStr); //agregar sueldo,inicializa
+Employee* employee_newParametros(Employee* this,char* idStr,char* nombreStr,char* horasTrabajadasStr,char* sueldoStr); //agregar sueldo,inicializa
 void employee_delete();
 
 int employee_setId(Employee* this,int id);

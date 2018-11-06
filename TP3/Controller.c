@@ -16,16 +16,18 @@
 int controller_loadFromText(char* path , LinkedList* pArrayListEmployee)
 {
     FILE *pFile;
-    int r,i=0;
+    int retorno=-1;
     if (path!=NULL && pArrayListEmployee!= NULL){
         //aca dentro abro el archivo y llamo a la funcion parser para cargar los datos al array
         pFile=fopen(path,"r");
-        if (pFile)==NULL){
+        if (pFile==NULL){
             printf("El archivo no puede ser abierto");
+            retorno=-1;
             return retorno;
         }
         else {
             parser_EmployeeFromText(pFile,pArrayListEmployee);
+            retorno=1;
         }
     }
     fclose(pFile);

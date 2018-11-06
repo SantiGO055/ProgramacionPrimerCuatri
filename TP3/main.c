@@ -21,13 +21,17 @@
 
 int main()
 {
-    int option = 0;
+    int option = 1,i;
     LinkedList* listaEmpleados = ll_newLinkedList();
     do{
         switch(option)
         {
             case 1:
                 controller_loadFromText("data.csv",listaEmpleados);
+        for(i=0; i<20; i++){
+        printf("id:%d nombre:%s Horas Trabajadas:%d Sueldo:%d\n", listaEmpleados[i].id, listaEmpleados[i].nombre,
+               listaEmpleados[i].horasTrabajadas, listaEmpleados[i].sueldo);
+               }
                 break;
         }
     }while(option != 10);
