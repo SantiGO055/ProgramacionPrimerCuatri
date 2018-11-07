@@ -3,43 +3,55 @@
 #include "LinkedList.h"
 #include "Employee.h"
 
-Employee* employee_new(char* id, char* nombre, char* horasTrabajadas, char* sueldo){
+Employee* employee_new(){
 
     Employee* this = malloc(sizeof(LinkedList));
-        if(this!=NULL){
-            employee_newParametros(this,id,nombre,horasTrabajadas,sueldo);
-        }
     return this;
 }
-Employee* employee_newParametros(Employee* this , char* idStr,char* nombre,char* horasTrabajadasStr,char* sueldoStr){
-    int id, horasTrabajadas,sueldo;
-    id=atoi(idStr);
-    horasTrabajadas = atoi(horasTrabajadasStr);
-    sueldo = atoi(sueldoStr);
-    employee_setId(this, id);
-    employee_setNombre(this, nombre);
-    employee_setHorasTrabajadas(this,horasTrabajadas);
-    employee_setSueldo(this,sueldo);
+Employee* employee_newParametros(char* idStr,char* nombre,char* horasTrabajadasStr,char* sueldoStr){
+    Employee* e=employee_new();
+    if(e!=NULL && idStr!=NULL && nombre!=NULL && horasTrabajadasStr!=NULL && sueldoStr!=NULL){
+        employee_setId(e, idStr);
+        employee_setNombre(e, nombre);
+        employee_setHorasTrabajadas(e,horasTrabajadasStr);
+        employee_setSueldo(e,sueldoStr);
+
+
+    }
+
+    return e;
 }
 
 int employee_setId(Employee* this,int id){
+    id=atoi(id);
     if(id>0)
         this->id = id;
 }
 
-int employee_getId(Employee* this,int* id){
-
+int employee_getId(Employee* this){
+    return this->id;
 }
 
 int employee_setNombre(Employee* this,char* nombre){
     if(nombre[0] != '\0')
         strncpy(this->nombre, nombre, sizeof(this->nombre));
 }
+int employee_getNombre(Employee* this){
+    return this->nombre;
+}
 int employee_setHorasTrabajadas(Employee* this,int horasTrabajadas){
+    horasTrabajadas = atoi(horasTrabajadas);
     if(horasTrabajadas>0)
         this->horasTrabajadas = horasTrabajadas;
 }
+int employee_getHorasTrabajadas(Employee* this){
+    return this->horasTrabajadas;
+}
 int employee_setSueldo(Employee* this,int sueldo){
+    sueldo = atoi(sueldo);
     if(sueldo>0)
         this->sueldo = sueldo;
+}
+int employee_getSueldo(Employee* this){
+    return this->sueldo;
 }

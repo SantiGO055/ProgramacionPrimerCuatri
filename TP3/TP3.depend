@@ -84,3 +84,44 @@
 
 1541522562 c:\users\drspeedyres\desktop\tp3\controller.h
 
+1541519326 source:c:\users\alumno\desktop\tp3\controller.c
+	<stdio.h>
+	<stdlib.h>
+	"LinkedList.h"
+	"Employee.h"
+
+1541519326 c:\users\alumno\desktop\tp3\linkedlist.h
+
+1541544154 c:\users\alumno\desktop\tp3\employee.h
+
+1541552090 source:c:\users\alumno\desktop\tp3\employee.c
+	<stdio.h>
+	<stdlib.h>
+	"LinkedList.h"
+	"Employee.h"
+
+1541552604 source:c:\users\alumno\desktop\tp3\parser.c
+	<stdio.h>
+	<stdlib.h>
+	"LinkedList.h"
+	"Employee.h"
+
+1541545748 source:c:\users\alumno\desktop\tp3\main.c
+	<stdio.h>
+	<stdlib.h>
+	"LinkedList.h"
+	"Controller.h"
+	"Employee.h"
+	"utn.h"
+
+1541519326 c:\users\alumno\desktop\tp3\controller.h
+
+1541519326 source:c:\users\alumno\desktop\tp3\utn.c
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	<ctype.h>
+	"utn.h"
+
+1541519326 c:\users\alumno\desktop\tp3\utn.h
+
