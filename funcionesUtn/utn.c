@@ -1,62 +1,38 @@
-#include <stdio.h>
 #include <stdlib.h>
+#include <stdio.h>
 #include <string.h>
 #include <ctype.h>
+#include <conio.h>
 #include "utn.h"
-static int getInt(int* pBuffer)
-{
+static int getInt(int* pBuffer){
     return scanf("%d",pBuffer);
 }
 
-static int getFloat(float* pBuffer)
-{
+static int getFloat(float* pBuffer){
     return scanf("%f",pBuffer);
 }
-static int getCaracter(char* pBuffer)
-{
-    /*int cantidad;
-    fgets(pBuffer,sizeof(pBuffer)-2,stdin);
-
-    cantidad = strlen(pBuffer);
-    pBuffer[cantidad-1] = '\0';
-    if (cantidad==1){
-        printf("Ingreso al if getCaracter");
-        return 1;
-    }
-    else{
-            printf("Ingreso al else getCaracter");
-    return 0;
-    }*/
-    return scanf("%c",pBuffer);
-}
-
-
-
-
 int utn_getEntero(  int* pEntero, char* msg,
                     char* msgErr,int min, int max,
-                    int reintentos)
-
-{
-    int retorno=-1; //lo uso para corroborar si devuelve bien o no la funcion
+                    int reintentos){
+    int retorno=-1;
     int bufferInt;
     if(pEntero != NULL && msg != NULL && msgErr != NULL
-        && min <= max && reintentos >= 0)//Todo lo que sea puntero preguntamos si es distinto de null
+        && min <= max && reintentos >= 0)
     {
         do
         {
             reintentos--;
             printf("%s",msg);
-            if( (getInt(&bufferInt) == 1) && //reemplazamos el scanf por el getInt si scanf lee lo que mandamos hacer devuelve un 1, si no lo logra hacer devuelve un 0
+            if( (getInt(&bufferInt) == 1) &&
                 (bufferInt >= min && bufferInt <= max))
             {
                 *pEntero = bufferInt;
                 retorno = 0;
-                break;//rompe el bucle mas cercano que tenga
+                break;
             }
             else
             {
-                fflush(stdin); //limpio el buffer por si ingreso mal algun dato no quede guardado en la posicion de memoria
+                fflush(stdin);
                 printf("%s",msgErr);
             }
         }while(reintentos>=0);
@@ -64,12 +40,8 @@ int utn_getEntero(  int* pEntero, char* msg,
     }
     return retorno;
 }
-
-
-
 int utn_getFlotante(  float* pFlotante, char* msg, char* msgErr,int min, int max,
-                    int reintentos)
-{
+                    int reintentos){
     int retorno=-1;
     float bufferFloat;
     if(pFlotante != NULL && msg != NULL && msgErr != NULL
@@ -96,37 +68,63 @@ int utn_getFlotante(  float* pFlotante, char* msg, char* msgErr,int min, int max
     }
     return retorno;
 }
-
-
-
-int utn_getChar(char* input,char* msg,char* msgErr, char lowLimit, char hiLimit, int reintentos)
-{
-    int retorno=-1;
-    char bufferChar;
-    if( msg != NULL && msgErr != NULL
-       &&lowLimit<=hiLimit&&reintentos >= 0)
-    {
-        do
-        {
-            reintentos--;
-            printf("%s",msg);
-            fflush(stdin);
-            if( (getCaracter(&bufferChar) == 1)&&bufferChar>=lowLimit&&bufferChar<=hiLimit) //(bufferChar==lowLimit||bufferChar==hiLimit) para elegir dos letras como por ej el sexo m o f
-            //bufferChar>=lowLimit&&bufferChar<=hiLimit para elegir un rango de letras
-            {
-
-                *input = bufferChar;
-                retorno = 0;
-                break;
-            }
-            else
-            {
-
-                fflush(stdin);
-                printf("%s",msgErr);
-            }
-        }while(reintentos>=0);
-
+int esLetra(char* input){
+    int retorno=-1,i=0;
+    while (input[i]!='\0'){
+        if((input[i]!=' ')&&(input[i] < 'a' || input[i] > 'z') && (input[i] < 'A' || input[i] > 'Z')){
+            retorno=-1;
+            break;
+        }
+            i++;
     }
+    if(input[i]=='\0'){
+        retorno=1;
+    }
+    return retorno;
+}
+void utn_getString(char* input, char* msg) {
+            fflush(stdin);
+            printf("%s", msg);
+            fgets(input,100,stdin);
+            input[strcspn(input, "\n")] = 0;
+}
+int utn_getStringAvanzado(char* input,char* msg,char* msgErr,int cant, int reintentos){
+    char aux[cant];
+    do{
+        utn_getString(aux,msg);
+        if(esLetra(aux)!=-1){
+            strcpy(input,aux);
+            return 1;
+        }
+        else{
+            reintentos--;
+            printf("%s",msgErr);
+        }
+    }while(reintentos>=0);
+    return 0;
+}
+int utn_getTelefono(char* input,char* msg,char* msgErr,int cant, int reintentos){
+    char aux[cant];
+    int i=0,retorno=-1;
+    utn_getString(aux,msg);
+    do{
+        if(aux[i]=='\0'){
+            retorno=0;
+            break;
+        }
+        if(isdigit(aux[i])){
+            strcpy(input,aux);
+            retorno=0;
+            i++;
+        }
+
+        else{
+            printf("%s",msgErr);
+            reintentos--;
+            retorno=-1;
+            utn_getString(aux,msg);
+        }
+
+    }while(reintentos>=0);
     return retorno;
 }
