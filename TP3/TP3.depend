@@ -53,75 +53,83 @@
 	"LinkedList.h"
 	"Employee.h"
 
-1541518518 source:c:\users\drspeedyres\desktop\tp3\controller.c
+1541735655 source:c:\users\santi\desktop\tp3 nuevo\tp3\tp364\controller.c
 	<stdio.h>
 	<stdlib.h>
 	"LinkedList.h"
 	"Employee.h"
 
-1541522562 c:\users\drspeedyres\desktop\tp3\linkedlist.h
+1533133022 c:\users\santi\desktop\tp3 nuevo\tp3\tp364\linkedlist.h
 
-1541517033 c:\users\drspeedyres\desktop\tp3\employee.h
+1541736258 c:\users\santi\desktop\tp3 nuevo\tp3\tp364\employee.h
 
-1541518694 source:c:\users\drspeedyres\desktop\tp3\parser.c
-	<stdio.h>
-	<stdlib.h>
-	"LinkedList.h"
-	"Employee.h"
-
-1541518362 source:c:\users\drspeedyres\desktop\tp3\employee.c
-	<stdio.h>
-	<stdlib.h>
-	"LinkedList.h"
-	"Employee.h"
-
-1541518472 source:c:\users\drspeedyres\desktop\tp3\main.c
-	<stdio.h>
-	<stdlib.h>
-	"LinkedList.h"
-	"Controller.h"
-	"Employee.h"
-
-1541522562 c:\users\drspeedyres\desktop\tp3\controller.h
-
-1541519326 source:c:\users\alumno\desktop\tp3\controller.c
-	<stdio.h>
-	<stdlib.h>
-	"LinkedList.h"
-	"Employee.h"
-
-1541519326 c:\users\alumno\desktop\tp3\linkedlist.h
-
-1541544154 c:\users\alumno\desktop\tp3\employee.h
-
-1541552090 source:c:\users\alumno\desktop\tp3\employee.c
-	<stdio.h>
-	<stdlib.h>
-	"LinkedList.h"
-	"Employee.h"
-
-1541552604 source:c:\users\alumno\desktop\tp3\parser.c
-	<stdio.h>
-	<stdlib.h>
-	"LinkedList.h"
-	"Employee.h"
-
-1541545748 source:c:\users\alumno\desktop\tp3\main.c
-	<stdio.h>
-	<stdlib.h>
-	"LinkedList.h"
-	"Controller.h"
-	"Employee.h"
-	"utn.h"
-
-1541519326 c:\users\alumno\desktop\tp3\controller.h
-
-1541519326 source:c:\users\alumno\desktop\tp3\utn.c
+1541736660 source:c:\users\santi\desktop\tp3 nuevo\tp3\tp364\employee.c
 	<stdio.h>
 	<stdlib.h>
 	<string.h>
-	<ctype.h>
+	"LinkedList.h"
+	"Employee.h"
 	"utn.h"
 
-1541519326 c:\users\alumno\desktop\tp3\utn.h
+1541735796 source:c:\users\santi\desktop\tp3 nuevo\tp3\tp364\parser.c
+	<stdio.h>
+	<stdlib.h>
+	"LinkedList.h"
+	"Employee.h"
+
+1541736685 source:c:\users\santi\desktop\tp3 nuevo\tp3\tp364\main.c
+	<stdio.h>
+	<stdlib.h>
+	"LinkedList.h"
+	"Controller.h"
+	"Employee.h"
+	"utn.h"
+
+1533133022 c:\users\santi\desktop\tp3 nuevo\tp3\tp364\controller.h
+
+1541741128 c:\users\santi\desktop\tp3 nuevo\tp3\tp364\utn.h
+
+1541738450 source:c:\users\santi\desktop\tp3 nuevo\tp3\employee.c
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	"LinkedList.h"
+	"Employee.h"
+	"utn.h"
+
+1533133022 c:\users\santi\desktop\tp3 nuevo\tp3\linkedlist.h
+
+1541738404 c:\users\santi\desktop\tp3 nuevo\tp3\employee.h
+
+1541737500 c:\users\santi\desktop\tp3 nuevo\tp3\utn.h
+
+1541738754 source:c:\users\santi\desktop\tp3 nuevo\tp3\main.c
+	<stdio.h>
+	<stdlib.h>
+	"LinkedList.h"
+	"Controller.h"
+	"Employee.h"
+	"utn.h"
+
+1533133022 c:\users\santi\desktop\tp3 nuevo\tp3\controller.h
+
+1541735796 source:c:\users\santi\desktop\tp3 nuevo\tp3\parser.c
+	<stdio.h>
+	<stdlib.h>
+	"LinkedList.h"
+	"Employee.h"
+
+1541738077 source:c:\users\santi\desktop\tp3 nuevo\tp3\controller.c
+	<stdio.h>
+	<stdlib.h>
+	"LinkedList.h"
+	"Employee.h"
+
+1541737920 source:c:\users\santi\desktop\tp3 nuevo\tp3\utn.c
+	<stdlib.h>
+	<stdio.h>
+	<string.h>
+	<ctype.h>
+	<conio.h>
+	"utn.h"
 

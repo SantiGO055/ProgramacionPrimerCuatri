@@ -21,22 +21,55 @@
 
 int main()
 {
-    int option = 1,i;
+    int option,i=0;
     Employee* e;
     LinkedList* listaEmpleados = ll_newLinkedList();
-    utn_getEntero(&option,"Ingrese opcion\n1- Cargar empleados desde archivo de texto\n","Opcion incorrecta",
-                  0,1,2);
+
     do{
+        option=printMenu(option);
         switch(option)
         {
             case 1:
+                system("cls");
                 controller_loadFromText("data.csv",listaEmpleados);
-        //for(i=0; i<20; i++){
-        //printf("Id:%d Nombre:%s Horas Trabajadas:%d Sueldo:%d\n", employee_getId(e), employee_getNombre(e),
-               //employee_getHorasTrabajadas(e), employee_getSueldo(e));
-               //}
-                //break;
+                break;
+            case 2:
+                system("cls");
+                controller_loadFromBinary("data-binary", listaEmpleados);
+                break;
+            case 3:
+                system("cls");
+                controller_addEmployee(listaEmpleados);
+                break;
+            case 4:
+                system("cls");
+                controller_editEmployee(listaEmpleados);
+                break;
+            case 5:
+                system("cls");
+                controller_removeEmployee(listaEmpleados);
+                break;
+            case 6:
+                system("cls");
+                do{
+                    employee_print(ll_get(listaEmpleados,i));
+                    i++;
+                }while(i<=10);
+                break;
+            case 7:
+                system("cls");
+                controller_loadFromBinary("data-binary", listaEmpleados);
+                break;
+            case 8:
+                system("cls");
+                controller_saveAsText("path",listaEmpleados);
+                break;
+            case 9:
+                system("cls");
+                controller_saveAsBinary("path",listaEmpleados);
+                break;
         }
+
     }while(option != 10);
     return 0;
 }

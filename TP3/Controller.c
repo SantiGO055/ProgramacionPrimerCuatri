@@ -11,8 +11,6 @@
  * \return int
  *
  */
-
-//abro archivo, si esta todo ok
 int controller_loadFromText(char* path , LinkedList* pArrayListEmployee)
 {
     FILE *pFile;
@@ -43,7 +41,26 @@ int controller_loadFromText(char* path , LinkedList* pArrayListEmployee)
  */
 int controller_loadFromBinary(char* path , LinkedList* pArrayListEmployee)
 {
-    return 1;
+    int retorno=-1;
+    FILE* pFile;
+    if (path!=NULL && pArrayListEmployee!= NULL){
+    if((pFile=fopen(path,"rb"))==NULL){
+        if((pFile=fopen(path,"wb"))==NULL){
+                printf("\nEl archivo %s no puede ser abierto",path);
+                retorno=-1;
+            }
+        else{
+            //creo el archivo
+            parser_EmployeeFromBinary(pFile,pArrayListEmployee);
+            retorno=1;
+            }
+        }
+    }
+    else{
+        retorno=-1;
+    }
+    fclose(pFile);
+    return retorno;
 }
 
 /** \brief Alta de empleados
@@ -55,6 +72,14 @@ int controller_loadFromBinary(char* path , LinkedList* pArrayListEmployee)
  */
 int controller_addEmployee(LinkedList* pArrayListEmployee)
 {
+    Employee *arrAux = ll_get(pArrayListEmployee,pArrayListEmployee->size);
+    char nombre[50];
+    int sueldo,horasTrabajadas;
+    utn_getStringAvanzado(nombre,"Ingrese nombre: ","ERROR! El apellido debe ser solo letras\n",50,2);
+    utn_getEntero(&horasTrabajadas,"Ingrese las horas trabajadas: ","ERROR! Las horas deben ser mayor a 0",0,500,2);
+    utn_getEntero(&sueldo,"Ingrese sueldo: ","ERROR! El sueldo debe ser mayor a 0",0,500000,2);
+    Employee *employee = employee_newParametros(arrAux->id+1,nombre,horasTrabajadas,sueldo);
+    ll_add(pArrayListEmployee, employee);
     return 1;
 }
 
